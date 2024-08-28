@@ -1,4 +1,3 @@
-import React from 'react'
 //TODO: Add comment to the post
 
 function Comment() {

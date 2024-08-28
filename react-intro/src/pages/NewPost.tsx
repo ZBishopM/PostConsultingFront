@@ -12,7 +12,7 @@ function NewPost() {
             <Navbar>
                 {
                     user&&
-                    <PostForm user={user}/>
+                    <PostForm user={user} edit={false}/>
                 }
             </Navbar>
             <Footer />

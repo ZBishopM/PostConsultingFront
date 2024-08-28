@@ -5,7 +5,7 @@ import { Post } from "../interfaces/Post";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function PostForm({ user, edit, postPassed }: { user: User, edit: boolean, postPassed: Post }) {
+function PostForm({ user, edit, postPassed }: { user: User, edit: boolean, postPassed?: Post }) {
 
     const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ function PostForm({ user, edit, postPassed }: { user: User, edit: boolean, postP
             toast.error("Todos los campos son obligatorios");
             return;
         }
-        if (edit) {
+        if (edit&&postPassed) {
             const token = localStorage.getItem('token');
             await axios.post(`${import.meta.env.VITE_REACT_APP_API_URL}/posts/edit/${postPassed.id}`, post, {
                 headers: {
@@ -57,11 +57,11 @@ function PostForm({ user, edit, postPassed }: { user: User, edit: boolean, postP
             });
     }
     useEffect(() => {
-        if (edit) {
+        if (edit&&postPassed) {
             setTitle(postPassed.title);
             setDescription(postPassed.description);
         }
-    }, [edit, postPassed.title, postPassed.description]);
+    }, [edit, postPassed]);
     return (
         <div>
             <label className="form-control w-full max-w-xs">
