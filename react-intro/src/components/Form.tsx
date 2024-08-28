@@ -19,8 +19,7 @@ function Form() {
             confirmPassword: confirmPassword
         }
         axios.post(`${import.meta.env.VITE_REACT_APP_API_URL}/users`, user)
-            .then(response => {
-                console.log(response.data);
+            .then(() => {
                 toast.success("Usuario creado exitosamente");
                 navigate('/'); 
             })

@@ -3,13 +3,13 @@ import { createContext, useState, useEffect } from "react"
 import { User } from "../interfaces/User";
 export interface AuthContextType {
     user: User | null;
-    setUser: React.Dispatch<React.SetStateAction<User | null>>;
+    setUser: React.Dispatch<React.SetStateAction<User>>;
 }
 export const AuthContext = createContext({});
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [user, setUser] = useState<User | null>(null);
     useEffect(() => {
-        const storedUser = localStorage.getItem('user');
+        const storedUser = localStorage.getItem('userInfo');
         if (storedUser) {
             setUser(JSON.parse(storedUser));
         }

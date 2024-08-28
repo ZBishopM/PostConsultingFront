@@ -1,13 +1,15 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import './output.css'
-import Home from './pages/Home'
-import NotFound from './pages/NotFound'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import Posts from './pages/Posts'
-import LogIn from './pages/LogIn'
-import Register from './pages/Register'
 import { AuthProvider } from './components/AuthContext'
+import './output.css'
+import Home from './pages/Home'
+import LogIn from './pages/LogIn'
+import NewPost from './pages/NewPost'
+import NotFound from './pages/NotFound'
+import Post from './pages/Post'
+import Posts from './pages/Posts'
+import Register from './pages/Register'
 
 function App() {
 
@@ -21,6 +23,8 @@ function App() {
             <Route path="/posts" element={<Posts />} />
             <Route path="/login" element={<LogIn />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/posts/new" element={<NewPost />} />
+            <Route path="/posts/:slug" element={<Post />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

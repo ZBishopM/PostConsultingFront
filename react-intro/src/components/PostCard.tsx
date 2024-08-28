@@ -32,15 +32,15 @@ const PostCard = (item:Post) => {
                                 <div className="card-actions justify-between flex">
                                     <IconButton icon={<HeartButton swap_off="swap-off" swap_on="swap-on" swap_active={swapActive}></HeartButton>} 
                                         className="btn btn-ghost"
-                                        num={item.countLikes}
+                                        num={item.countLikes??0}
                                         onclick={handleClick}
                                     >
                                     </IconButton>
                                     <IconButton icon={<CommentButton/>} className="btn btn-ghost pointer-events-none" 
-                                        num={item.countComments}
+                                        num={item.countComments??0}
                                     >
                                     </IconButton>
-                                    <button className="btn btn-primary">
+                                    <button onClick={() => window.location.href = `/posts/${item.id}`} className="btn btn-primary">
                                         Ver más
                                     </button>
                                 </div>
@@ -49,20 +49,6 @@ const PostCard = (item:Post) => {
                     
                 
             }
-            {/* <figure>
-                <img
-                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                    alt="Shoes" />
-            </figure>
-            <div className="card-body">
-                <h2 className="card-title">Shoes!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-between flex">
-                    <IconButton icon={<HeartButton></HeartButton>} className="btn btn-ghost"></IconButton>
-                    <IconButton icon={<CommentButton></CommentButton>} className="btn btn-ghost pointer-events-none"></IconButton>
-                    <button className="btn btn-primary">Ver más</button>
-                </div>
-            </div> */}
             </>
     )
 }

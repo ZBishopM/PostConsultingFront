@@ -1,32 +1,18 @@
-import React, { useContext } from "react"
-import { AuthContext ,AuthContextType} from "./AuthContext";
-import { toast } from "react-toastify";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { AuthContext, AuthContextType } from "./AuthContext";
+import { User } from "../interfaces/User";
 
 const Navbar = ({ children }: { children: React.ReactNode }) => {
     const navigate = useNavigate();
     const { user, setUser } = useContext(AuthContext) as AuthContextType;
     const handleLogout = async () => {
-        try {
-            const response = await fetch(`${import.meta.env.VITE_REACT_APP_API_URL}/logout`, {
-                method: 'POST',
-                credentials: 'include', // important for sending cookies
-            });
-
-            if (response.ok) {
-                // Clear user from local storage and context
-                localStorage.removeItem('user');
-                setUser(null);
-                navigate('/login'); 
-                toast.warn('Logout successful');
-                // Optionally, redirect to login page
-                // history.push('/login');
-            } else {
-                console.error('Logout failed');
-            }
-        } catch (error) {
-            console.error('Error during logout:', error);
-        }
+        localStorage.removeItem('userInfo');
+        localStorage.removeItem('token');
+        setUser(null as unknown as User);
+        navigate('/login');
+        toast.warn('Logout successful');
     };
     return (
         <div className="drawer">
@@ -64,6 +50,14 @@ const Navbar = ({ children }: { children: React.ReactNode }) => {
                                             </button>
                                         </li>
                                         <li><a href="/">{user.name}</a></li>
+                                        <li className="flex justify-center">{
+                                            (user.role === "ROLE_USER") ?(
+                                                <>Usuario</>
+                                            ):(
+                                                <>Administrador</>
+                                            )
+                                            }</li>
+                                
                                     </>
                                 ) : (
                                     <>
