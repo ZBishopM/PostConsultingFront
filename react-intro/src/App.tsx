@@ -16,7 +16,6 @@ function App() {
   return (
     <>
       <AuthProvider>
-      <ToastContainer />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -28,6 +27,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
+        <ToastContainer/>
       </AuthProvider>
     </>
   )

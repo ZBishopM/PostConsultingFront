@@ -3,13 +3,13 @@ import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Post } from '../interfaces/Post';
 import PostForm from './PostForm';
-import { AuthContext, AuthContextType } from './AuthContext';
+import { AuthContext } from './AuthContext';
 
 function SinglePost() {
     const [post, setPost] = useState<Post>({ id: 0, title: '', description: '' });
     const { slug } = useParams();
     const navigate = useNavigate();
-    const { user } = useContext(AuthContext) as AuthContextType;
+    const { user } = useContext(AuthContext);
     useEffect(() => {
         const token = localStorage.getItem('token');
         axios.get(`${import.meta.env.VITE_REACT_APP_API_URL}/posts/${slug}`, {

@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { AuthContext, AuthContextType } from "./AuthContext";
+import { AuthContext } from "./AuthContext";
 import { User } from "../interfaces/User";
+import Footer from "./Footer";
 
 const Navbar = ({ children }: { children: React.ReactNode }) => {
     const navigate = useNavigate();
-    const { user, setUser } = useContext(AuthContext) as AuthContextType;
+    const { user, setUser } = useContext(AuthContext);
     const handleLogout = async () => {
         localStorage.removeItem('userInfo');
         localStorage.removeItem('token');
@@ -15,9 +16,9 @@ const Navbar = ({ children }: { children: React.ReactNode }) => {
         toast.warn('Logout successful');
     };
     return (
-        <div className="drawer">
+        <div className="drawer flex flex-col min-h-screen">
             <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content flex flex-col">
+            <div className="drawer-content grow flex flex-col">
                 {/* Navbar */}
                 <div className="navbar bg-base-300 w-full">
                     <div className="flex-none lg:hidden">
@@ -82,6 +83,8 @@ const Navbar = ({ children }: { children: React.ReactNode }) => {
                     <li><a href="/posts">Proyectos</a></li>
                 </ul>
             </div>
+            
+            <Footer />
         </div>
     )
 }

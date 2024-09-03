@@ -1,5 +1,4 @@
 import Navbar from "../components/Navbar"
-import Footer from "../components/Footer"
 import Hero from "../components/Hero"
 const Home = () => {
     return (
@@ -7,7 +6,6 @@ const Home = () => {
             <Navbar>
                 <Hero />
             </Navbar>
-            <Footer />
         </>
     )
 }

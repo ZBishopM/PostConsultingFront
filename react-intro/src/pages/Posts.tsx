@@ -1,13 +1,12 @@
 import axios from "axios"
 import { useContext, useEffect, useState } from "react"
-import Footer from "../components/Footer"
 import Navbar from "../components/Navbar"
 import PostCard from "../components/PostCard"
 import { Post } from "../interfaces/Post"
-import { AuthContext, AuthContextType } from "../components/AuthContext"
+import { AuthContext } from "../components/AuthContext"
 const Posts = () => {
     const [data, setData] = useState<Post[]>([]);
-    const { user } = useContext(AuthContext) as AuthContextType;
+    const { user } = useContext(AuthContext);
     useEffect(() => {
         const token = localStorage.getItem('token');
         axios.get(`${import.meta.env.VITE_REACT_APP_API_URL}/posts`,{
@@ -34,7 +33,7 @@ const Posts = () => {
                     <></>
                 )}
                 <br />
-                <div className={Array.isArray(data) && data.length > 0 ?"m-auto min-h-screen grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center":"m-auto min-h-screen flex flex-col gap-7"}>
+                <div className={Array.isArray(data) && data.length > 0 ?"m-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 place-items-center":"m-auto flex flex-col gap-7"}>
                     {
                         Array.isArray(data) && data.length > 0 ?(
                             data.map((item: Post) => (
@@ -49,7 +48,6 @@ const Posts = () => {
                     }
                 </div>
             </Navbar>
-            <Footer />
         </>
     )
 }

@@ -1,13 +1,18 @@
 import React from "react"
 import { createContext, useState, useEffect } from "react"
 import { User } from "../interfaces/User";
+
+type NullableInterface<T> = (T | null)
 export interface AuthContextType {
-    user: User | null;
-    setUser: React.Dispatch<React.SetStateAction<User>>;
+    user: NullableInterface<User>;
+    setUser:(user: User) => void
 }
-export const AuthContext = createContext({});
+export const AuthContext = createContext<AuthContextType>({
+    user: null,
+    setUser: () => {}
+});
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-    const [user, setUser] = useState<User | null>(null);
+    const [user, setUser] = useState<NullableInterface<User>>(null);
     useEffect(() => {
         const storedUser = localStorage.getItem('userInfo');
         if (storedUser) {

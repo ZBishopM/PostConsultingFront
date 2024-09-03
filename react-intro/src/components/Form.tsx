@@ -12,6 +12,10 @@ function Form() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
+        if(email === '' || password === '' || confirmPassword === '' || name === '') {
+            toast.error("Todos los campos son obligatorios");
+            return;
+        }
         const user: User = {
             name: name,
             email: email,
@@ -34,7 +38,6 @@ function Form() {
     }
     return (
         <>
-            <div className='min-h-screen'>
                 <div className='flex justify-center min-h-[6rem]'>
                     <div className="flex flex-col xs:w-1/4 sm:w-3/4 md:w-3/4 lg:w-1/2 gap-7 bg-base-200 p-6 my-6 rounded-lg">
                     <h1 className="text-3xl font-bold">Registrate </h1>
@@ -101,7 +104,6 @@ function Form() {
                         <button onClick={handleSubmit} className='btn btn-primary'>Registrarse</button>
                     </div>
                 </div>
-            </div>
         </>
     )
 }

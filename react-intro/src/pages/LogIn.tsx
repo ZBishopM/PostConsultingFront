@@ -1,13 +1,12 @@
 import { useContext, useEffect } from "react";
-import { AuthContext, AuthContextType } from "../components/AuthContext";
-import Footer from "../components/Footer"
+import { AuthContext } from "../components/AuthContext";
 import LogInForm from "../components/LogInForm"
 import Navbar from "../components/Navbar"
 import { useNavigate } from "react-router-dom";
 
 const LogIn = () => {
     const navigate = useNavigate();
-    const { user } = useContext(AuthContext) as AuthContextType;
+    const { user } = useContext(AuthContext)
     useEffect(() => {
         if (user) {
             navigate('/posts');
@@ -18,7 +17,6 @@ const LogIn = () => {
             <Navbar>
                 <LogInForm />
             </Navbar>
-            <Footer />
         </>
     )
 }
