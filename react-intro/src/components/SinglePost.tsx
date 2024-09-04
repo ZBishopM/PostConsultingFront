@@ -57,8 +57,10 @@ function SinglePost() {
                             <p className="mb-5">
                                 {post.description}.
                             </p>
-                            <button className='btn' onClick={() => { deletePost(post.id ?? 0) }}>eliminar</button>
-                            <button className="btn" onClick={() => (document.getElementById('my_modal_2') as HTMLDialogElement).showModal()}>open modal</button>
+                            <div className='flex gap-4 justify-center'>
+                                <button className="btn" onClick={() => (document.getElementById('my_modal_2') as HTMLDialogElement).showModal()}>Editar </button>
+                                <button className='btn btn-error' onClick={() => { deletePost(post.id ?? 0) }}>Eliminar</button>
+                            </div>
                             <dialog id="my_modal_2" className="modal">
                                 <div className="modal-box">
                                     <h3 className="font-bold text-lg">Editar Post</h3>{

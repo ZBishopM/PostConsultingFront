@@ -27,7 +27,7 @@ const PostCard = (item:Post) => {
                             </figure>
                             <div className="card-body">
                                 <h2 className="card-title">{item.title}</h2>
-                                <p>{item.description}</p>
+                                <p className="overflow-ellipsis overflow-hidden text-nowrap">{item.description}</p>
                                 <p>{item.postedDateFormatted}</p>
                                 <div className="card-actions justify-between flex">
                                     <IconButton icon={<HeartButton swap_off="swap-off" swap_on="swap-on" swap_active={swapActive}></HeartButton>} 

@@ -1,4 +1,3 @@
-import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import SinglePost from '../components/SinglePost'
 
@@ -8,7 +7,6 @@ function Post() {
             <Navbar>
                 <SinglePost />
             </Navbar>
-            <Footer />
         </>
   )
 }
